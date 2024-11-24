@@ -1,84 +1,76 @@
-# Decision Tree Classifier for Predicting Customer Purchase Behavior
-
+# Decision Tree Classifier for Bank Deposit Prediction
 ## Overview
-This project involves building a **Decision Tree Classifier** to predict whether a customer will purchase a product or service based on their demographic and behavioral data. The dataset used is the **Bank Marketing Dataset** from the UCI Machine Learning Repository. The solution incorporates data cleaning, exploratory data analysis (EDA), feature engineering, and predictive modeling.
 
----
+This project aims to predict whether a customer will subscribe to a deposit product using a dataset of customer attributes such as age, job, marital status, and account balance. A Decision Tree classifier is used to make predictions based on the given features.
 
 ## Table of Contents
-1. [Project Description](#project-description)
-2. [Installation](#installation)
-3. [Dataset](#dataset)
-4. [Methodology](#methodology)
+
+1. [Installation](#installation)
+2. [Data Collection](#data-collection)
+3. [Data Cleaning](#data-cleaning)
+4. [Model Building](#model-building)
 5. [Results](#results)
 6. [Contributing](#contributing)
 7. [License](#license)
-
----
-
-## Project Description
-The goal of this project is to create a machine learning model that can classify whether a customer will subscribe to a term deposit based on various features such as age, job, marital status, and balance. The primary steps include:
-- Data Cleaning and Preparation
-- Exploratory Data Analysis (EDA)
-- Training a Decision Tree Classifier
-- Evaluating the model's performance
-- Visualizing the Decision Tree
-
----
+8. [Contact](#contact)
 
 ## Installation
-To run this project locally, you'll need Python and the following libraries installed:
-- `pandas`
-- `numpy`
-- `matplotlib`
-- `seaborn`
-- `scikit-learn`
-- `imbalanced-learn`
 
-You can install the dependencies using:
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn
-```
-## Dataset
+To run this project, ensure you have the following Python libraries installed:
+---bash
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+import seaborn as sns
+import warnings
+from kaggle.api.kaggle_api_extended import KaggleApi
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-The dataset used is the **Bank Marketing Dataset**, which contains **45,211 rows** and **17 columns**. You can download the dataset from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/bank+marketing).
+## Data Collection
 
-### Features
-1. **Demographic Data**: `age`, `job`, `marital`, `education`
-2. **Behavioral Data**: `balance`, `housing`, `loan`, `contact`
-3. **Target Variable**: `y` (whether the customer subscribed to a term deposit)
+The dataset used in this project is the **Bank Marketing Dataset** from Kaggle, available at [rouseguy/bankbalanced](https://www.kaggle.com/datasets/rouseguy/bankbalanced). It includes customer information along with whether they subscribed to a deposit (`yes` or `no`).
 
----
+## Data Cleaning
 
-## Methodology
+The data cleaning process involved several steps to prepare the dataset for analysis and modeling:
 
-### 1. Data Cleaning
-- Checked for missing values and duplicates (none found).
-- Encoded categorical variables using **Label Encoding** and **One-Hot Encoding**.
+- **Handling Missing Data**: Missing values were handled by replacing them with the most frequent value in the respective column.
+- **Encoding Categorical Variables**: Categorical features like `job` and `education` were encoded into numerical values using `LabelEncoder`.
+- **Feature Scaling**: Features such as `age` and `balance` were scaled using `StandardScaler` to ensure the model treats them equally.
+- **Data Splitting**: The dataset was split into training and testing sets using `train_test_split`.
 
-### 2. Exploratory Data Analysis (EDA)
-- Visualized distributions of numerical and categorical variables.
-- Analyzed relationships between features and the target variable.
-- Computed a correlation matrix to understand feature relationships.
+## Model Building
 
-### 3. Modeling
-- Implemented a **Decision Tree Classifier** using `scikit-learn`.
-- Handled class imbalance using **SMOTE** (Synthetic Minority Oversampling Technique).
-- Tuned hyperparameters using **GridSearchCV** for optimal performance.
+A **Decision Tree Classifier** was used to predict whether a customer will subscribe to a deposit. The model was trained on the cleaned and preprocessed dataset.
 
-### 4. Evaluation
-- Assessed the model using metrics such as **Accuracy**, **Confusion Matrix**, and **Classification Report**.
-- Plotted and interpreted the decision tree for visualization purposes.
+- **Training**: The model was trained on the training set with hyperparameters tuned for better performance.
+- **Evaluation**: The model's performance was evaluated using accuracy, precision, recall, and F1-score.
 
----
 
 ## Results
 
-1. **Key Feature**: The `duration` variable (length of the last contact) was the most significant predictor.
-2. **Accuracy**: Achieved a high accuracy score using a tuned Decision Tree Classifier.
-3. The confusion matrix and classification report indicated strong predictive performance.
+- **Accuracy**: 81%
+- **Precision**: 0.80
+- **Recall**: 0.82
+- **F1-Score**: 0.81
 
----
+
+## Feature Importance
+
+The most important features in predicting whether a customer subscribes to a deposit were:
+
+- Duration of last contact
+- Balance
+- Previous contacts
+
+<p align="center">
+  <img src="images/model_performance.jpg" alt="Model Performance" width="300"/>
+</p>
+
 ## Contributing
 
 Contributions are welcome! If you'd like to improve this project:
