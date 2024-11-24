@@ -84,3 +84,9 @@ Contributions are welcome! If you'd like to improve this project:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
+
+## Contact
+
+If you have any questions or need further assistance, feel free to reach out:
+Hermela Seltanu
+LinkedIn: [Hermela Seltanu](https://www.linkedin.com/in/hermelaseltanu/)
