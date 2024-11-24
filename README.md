@@ -1,4 +1,3 @@
-# PRODIGY_DS_03
 # Decision Tree Classifier for Predicting Customer Purchase Behavior
 
 ## Overview
