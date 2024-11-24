@@ -73,10 +73,16 @@ The model was trained on the cleaned and preprocessed dataset.
 
 ## Results
 
-
-<p align="center">
-  <img src="confusion_matrix.jpeg" alt="Model Performance" width="700"/>
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img src="result.jpeg" alt="Train Set Performance" width="700"/>
+    </td>
+    <td align="center">
+      <img src="confusion_matrix.jpeg" alt="Test Set Performance" width="700"/>
+    </td>
+  </tr>
+</table>
 
 The classification report provides a summary of the model's performance across key metrics for each class (0: No Deposit, 1: Deposit):
 
